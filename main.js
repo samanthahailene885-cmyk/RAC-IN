@@ -142,17 +142,21 @@
       e.preventDefault();
 
       var name = document.getElementById('contact-name').value.trim();
+      var org = document.getElementById('contact-org').value.trim();
       var email = document.getElementById('contact-email').value.trim();
-      var phone = document.getElementById('contact-phone').value.trim();
+      var need = document.getElementById('contact-need').value;
+      var deadline = document.getElementById('contact-deadline').value;
       var message = document.getElementById('contact-message').value.trim();
 
-      if (!name || !email || !message) return;
+      if (!name || !org || !email || !need || !deadline || !message) return;
 
       var subject = encodeURIComponent('Contact depuis racin.africa — ' + name);
       var body = encodeURIComponent(
         'Nom : ' + name + '\n' +
-        'Email : ' + email + '\n' +
-        (phone ? 'Téléphone : ' + phone + '\n' : '') +
+        'Organisation : ' + org + '\n' +
+        'Courriel : ' + email + '\n' +
+        'Nature du besoin : ' + need + '\n' +
+        'Échéance : ' + deadline + '\n' +
         '\nMessage :\n' + message
       );
 
