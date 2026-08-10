@@ -259,7 +259,7 @@ body {
 }
 
 .portrait-duotone img {
-  filter: grayscale(100%);
+  filter: grayscale(30%);
   display: block;
   width: 100%;
   height: 100%;
@@ -272,12 +272,12 @@ body {
   inset: 0;
   background: var(--navy);
   mix-blend-mode: multiply;
-  opacity: 0.65;
+  opacity: 0.3;
   transition: opacity 0.3s ease;
 }
 
 .portrait-duotone:hover::after {
-  opacity: 0.3;
+  opacity: 0.15;
 }
 
 .lines-pattern {
@@ -307,14 +307,21 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
+  height: 80px;
 }
 
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
   text-decoration: none;
+}
+
+.nav-logo-img {
+  height: 70px;
+  width: auto;
+  display: block;
+  max-width: 250px;
+  object-fit: contain;
 }
 
 .nav-logo-icon {
@@ -346,7 +353,7 @@ body {
 
 .nav-links a {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 400;
   color: rgba(247, 233, 198, 0.75);
   letter-spacing: 0.04em;
@@ -375,8 +382,8 @@ body {
 }
 
 .nav-cta {
-  padding: 8px 18px;
-  font-size: 13px;
+  padding: 10px 22px;
+  font-size: 15px;
 }
 
 .nav-hamburger {
