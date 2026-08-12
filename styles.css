@@ -553,7 +553,7 @@ body {
 }
 
 .hero-mask-col .mask-svg {
-  width: clamp(180px, 20vw, 280px);
+  width: clamp(220px, 25vw, 320px);
   height: auto;
   color: var(--vermillion);
   filter: drop-shadow(0 0 40px rgba(248, 72, 8, 0.3));
@@ -562,8 +562,9 @@ body {
 }
 
 .hero-mask-col .mask-stroke {
-  filter: drop-shadow(0 0 40px rgba(248, 72, 8, 0.3)) grayscale(100%) contrast(1.5) brightness(1.2);
+  filter: drop-shadow(0 0 40px rgba(248, 72, 8, 0.3)) grayscale(100%) contrast(8) brightness(0.6) saturate(0);
   mix-blend-mode: normal;
+  opacity: 1;
 }
 
 .hero .scroll-indicator {
