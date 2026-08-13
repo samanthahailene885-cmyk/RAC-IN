@@ -93,13 +93,9 @@
               <filter id="edge">
                 <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" in="SourceGraphic" result="gray"/>
                 <feConvolveMatrix order="3" kernelMatrix="-1 -1 -1 -1 8 -1 -1 -1 -1" in="gray" result="edge"/>
-                <feMorphology operator="dilate" radius="1.5" in="edge" result="thick"/>
-                <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0" in="thick" result="colored"/>
-                <feComponentTransfer in="colored">
-                  <feFuncR type="linear" slope="1" intercept="0"/>
-                  <feFuncG type="linear" slope="1" intercept="0"/>
-                  <feFuncB type="linear" slope="1" intercept="0"/>
-                </feComponentTransfer>
+                <feMorphology operator="dilate" radius="2" in="edge" result="thick"/>
+                <feFlood flood-color="#C63600" result="orange"/>
+                <feComposite in="orange" in2="thick" operator="in" result="colored"/>
               </filter>
             </defs>
             <image href="Icone RACIN AFRICA 1,2.png" width="280" height="403" filter="url(#edge)"/>
@@ -320,28 +316,28 @@
     <!-- Références -->
     <section class="references section" id="references">
       <div class="container">
-        <div class="references-header reveal">
-          <p class="section-label">Références</p>
-          <h2 class="section-title">Ils nous font confiance</h2>
-        </div>
-        <div class="references-grid reveal reveal-delay-1">
-          <div class="reference-logo">BSIC</div>
-          <div class="reference-logo">Orange CI</div>
-          <div class="reference-logo">Ecobank</div>
-          <div class="reference-logo">SGBCI</div>
-          <div class="reference-logo">Nestlé</div>
-          <div class="reference-logo">MTN</div>
-          <div class="reference-logo">Total Énergies</div>
-          <div class="reference-logo">BHCI</div>
-          <div class="reference-logo">Côte d'Ivoire Telecom</div>
-          <div class="reference-logo">SIFCA</div>
-          <div class="reference-logo">Moov Africa</div>
-          <div class="reference-logo">Bolloré</div>
-        </div>
-        <div class="references-cta reveal reveal-delay-2">
-          <a href="references.html" class="text-link">Consulter toutes nos références
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
+        <div class="references-window reveal">
+          <div class="references-window-header">
+            <p class="references-window-label">Ils nous font confiance</p>
+            <h2 class="references-window-title">Références clients</h2>
+          </div>
+          <div class="references-logos">
+            <div class="reference-item">
+              <img src="Logo AFRIKALAO.png" alt="Afrikalao" loading="lazy">
+            </div>
+            <div class="reference-item">
+              <img src="Logo TTL Blanc 2.png" alt="Tiko Transit & Logistics" loading="lazy">
+            </div>
+            <div class="reference-item reference-item--wide">
+              <img src="marenova.png" alt="Marenova" loading="lazy">
+            </div>
+            <div class="reference-item">
+              <img src="logo-onemart.png" alt="Onemart" loading="lazy">
+            </div>
+            <div class="reference-item">
+              <img src="logo africim.png" alt="Africim" loading="lazy">
+            </div>
+          </div>
         </div>
       </div>
     </section>
