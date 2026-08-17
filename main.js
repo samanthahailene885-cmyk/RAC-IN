@@ -217,4 +217,48 @@
       });
     }
   }
+
+  /* FAQ Accordion */
+  var faqSection = document.getElementById('faq');
+  if (faqSection) {
+    var isMobile = window.innerWidth < 768;
+
+    // On mobile, collapse all initially
+    if (isMobile) {
+      var faqTriggers = faqSection.querySelectorAll('.bi-faq-trigger');
+      faqTriggers.forEach(function (trigger) {
+        trigger.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    faqSection.addEventListener('click', function (e) {
+      var trigger = e.target.closest('.bi-faq-trigger');
+      if (!trigger) return;
+
+      var isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+      var answer = document.getElementById(trigger.getAttribute('aria-controls'));
+
+      // Close all other items
+      var allTriggers = faqSection.querySelectorAll('.bi-faq-trigger');
+      allTriggers.forEach(function (t) {
+        if (t !== trigger) {
+          t.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Toggle current item
+      trigger.setAttribute('aria-expanded', !isExpanded);
+    });
+
+    // Handle keyboard navigation
+    faqSection.addEventListener('keydown', function (e) {
+      var trigger = e.target.closest('.bi-faq-trigger');
+      if (!trigger) return;
+
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        trigger.click();
+      }
+    });
+  }
 })();
