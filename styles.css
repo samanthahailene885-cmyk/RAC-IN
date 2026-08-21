@@ -552,11 +552,12 @@ body {
   border: 1px solid rgba(247, 233, 198, 0.06);
 }
 
-.hero-mask-col .mask-svg {
-  width: clamp(220px, 25vw, 320px);
+.hero-mask-col .hero-icon {
+  width: clamp(180px, 22vw, 280px);
   height: auto;
-  color: var(--vermillion);
-  filter: drop-shadow(0 0 40px rgba(248, 72, 8, 0.3));
+  object-fit: contain;
+  mix-blend-mode: lighten;
+  filter: drop-shadow(0 0 40px rgba(248, 72, 8, 0.35));
   position: relative;
   z-index: 1;
 }
@@ -946,10 +947,12 @@ body {
 
 .references-logos {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px 40px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 36px 28px;
   align-items: center;
   justify-items: center;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
 .reference-item {
@@ -957,7 +960,8 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 12px 16px;
+  height: 88px;
+  padding: 8px 12px;
   transition: transform 0.25s ease, opacity 0.25s ease;
   opacity: 0.85;
 }
@@ -983,34 +987,36 @@ body {
   filter: brightness(0) invert(1);
 }
 
+.reference-item img[src="logo-black-shield.png"] {
+  max-height: 80px;
+}
+
+.reference-item img[src="logo-rootup.png"] {
+  max-height: 70px;
+}
+
+@media (max-width: 900px) {
+  .references-logos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 24px;
+  }
+}
+
 @media (max-width: 768px) {
   .references-window {
     padding: 32px 24px 40px;
     border-radius: 20px;
   }
 
-  .references-logos {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px 20px;
+  .reference-item {
+    height: 72px;
   }
 
-  .reference-item--wide {
-    grid-column: 1 / -1;
-  }
-
-  .reference-item img {
-    max-height: 44px;
-  }
-}
-
-@media (max-width: 480px) {
-  .references-logos {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .reference-item--wide {
-    grid-column: auto;
+  .reference-item img,
+  .reference-item--wide img,
+  .reference-item img[src="logo-black-shield.png"],
+  .reference-item img[src="logo-rootup.png"] {
+    max-height: 52px;
   }
 }
 
