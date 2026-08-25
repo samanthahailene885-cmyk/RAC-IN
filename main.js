@@ -152,20 +152,108 @@
 
       if (!name || !org || !email || !need || !deadline || !message) return;
 
-      var subject = encodeURIComponent('Contact depuis racin.africa — ' + name);
-      var body = encodeURIComponent(
-        'Nom : ' + name + '\n' +
-        'Organisation : ' + org + '\n' +
-        'Courriel : ' + email + '\n' +
-        'Nature du besoin : ' + need + '\n' +
-        'Échéance : ' + deadline + '\n' +
-        '\nMessage :\n' + message
-      );
+      var formData = new FormData();
+      formData.append('name', name);
+      formData.append('organisation', org);
+      formData.append('email', email);
+      formData.append('need', need);
+      formData.append('deadline', deadline);
+      formData.append('message', message);
 
-      window.location.href = 'mailto:contact@racin.africa?subject=' + subject + '&body=' + body;
+      var submitBtn = contactForm.querySelector('.contact-form-submit');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Envoi en cours...';
 
-      modalBody.classList.add('is-hidden');
-      modalSuccess.hidden = false;
+      fetch('send_email.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Envoyer le message<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        
+        if (data.success) {
+          modalBody.classList.add('is-hidden');
+          modalSuccess.hidden = false;
+        } else {
+          alert('Erreur lors de l\'envoi: ' + (data.message || 'Veuillez réessayer'));
+        }
+      })
+      .catch(function(error) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Envoyer le message<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        alert('Erreur de connexion. Veuillez réessayer.');
+        console.error('Error:', error);
+      });
+    });
+  }
+
+  var applyForm = document.getElementById('apply-form');
+  if (applyForm) {
+    var params = new URLSearchParams(window.location.search);
+    var poste = params.get('poste');
+    var positionSelect = document.getElementById('apply-position');
+    if (positionSelect && (poste === 'creation-cm' || poste === 'spontanee')) {
+      positionSelect.value = poste;
+    }
+
+    applyForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var errorEl = document.getElementById('apply-error');
+      var submitBtn = document.getElementById('apply-submit');
+      var successEl = document.getElementById('apply-success');
+
+      if (errorEl) {
+        errorEl.hidden = true;
+        errorEl.textContent = '';
+      }
+
+      if (!applyForm.checkValidity()) {
+        applyForm.reportValidity();
+        return;
+      }
+
+      var formData = new FormData(applyForm);
+      submitBtn.disabled = true;
+      submitBtn.querySelector('span').textContent = 'Envoi en cours...';
+
+      fetch('send_email.php', {
+        method: 'POST',
+        body: formData
+      })
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          submitBtn.disabled = false;
+          submitBtn.querySelector('span').textContent = 'Envoyer ma candidature';
+          if (data.success) {
+            applyForm.hidden = true;
+            if (successEl) successEl.hidden = false;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } else {
+            var msg = data.message || 'Veuillez réessayer.';
+            if (data.errors && data.errors.length) {
+              msg = data.errors.join(' · ');
+            }
+            if (errorEl) {
+              errorEl.textContent = msg;
+              errorEl.hidden = false;
+            }
+          }
+        })
+        .catch(function (error) {
+          submitBtn.disabled = false;
+          submitBtn.querySelector('span').textContent = 'Envoyer ma candidature';
+          console.error('Application form error:', error);
+          if (errorEl) {
+            errorEl.textContent = 'Erreur de connexion. Veuillez réessayer.';
+            errorEl.hidden = false;
+          }
+        });
     });
   }
 
@@ -216,6 +304,42 @@
         setTimeout(renderLiveMetrics, 100);
       });
     }
+  }
+
+  var refsFilters = document.querySelector('.refs-filters');
+  if (refsFilters) {
+    var chips = refsFilters.querySelectorAll('.refs-chip');
+    var rows = document.querySelectorAll('.refs-table tbody tr');
+    var cells = document.querySelectorAll('.refs-board-cell');
+    var empty = document.getElementById('refs-empty');
+    var table = document.querySelector('.refs-table');
+
+    function applyRefsFilter(value) {
+      var visible = 0;
+      rows.forEach(function (row) {
+        var sectors = row.getAttribute('data-sectors') || '';
+        var show = value === 'all' || sectors.split(/\s+/).indexOf(value) !== -1;
+        row.hidden = !show;
+        if (show) visible += 1;
+      });
+      cells.forEach(function (cell) {
+        var sectors = cell.getAttribute('data-sectors') || '';
+        cell.hidden = !(value === 'all' || sectors.split(/\s+/).indexOf(value) !== -1);
+      });
+      if (table) table.hidden = visible === 0;
+      if (empty) empty.hidden = visible > 0;
+    }
+
+    refsFilters.addEventListener('click', function (e) {
+      var chip = e.target.closest('.refs-chip');
+      if (!chip) return;
+      chips.forEach(function (c) {
+        var active = c === chip;
+        c.classList.toggle('is-active', active);
+        c.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+      applyRefsFilter(chip.getAttribute('data-filter'));
+    });
   }
 
   /* FAQ Accordion */

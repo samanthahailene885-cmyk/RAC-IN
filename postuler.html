@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Postuler | RAC’IN AFRICA</title>
+  <meta name="description" content="Envoyez votre candidature à RAC’IN AFRICA. CV, portfolio et trois travaux. Réponse à chaque étape.">
+  <link rel="canonical" href="https://www.racin.africa/postuler">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-careers page-apply">
+
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="logo.png" alt="RAC'IN AFRICA" class="nav-logo-img">
+      </a>
+      <div class="nav-links">
+        <a href="index.html#expertises">Expertises</a>
+        <a href="index.html#realisations">Réalisations</a>
+        <a href="references.html">Références</a>
+        <a href="index.html#agence">Agence</a>
+        <a href="index.html#insights">Insights</a>
+        <a href="carrieres.html" class="nav-link-active">Carrières</a>
+        <a href="index.html#contact" class="btn-vermillion nav-cta">Contact</a>
+      </div>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Ouvrir le menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="index.html#expertises">Expertises</a>
+      <a href="index.html#realisations">Réalisations</a>
+      <a href="references.html">Références</a>
+      <a href="index.html#agence">Agence</a>
+      <a href="index.html#insights">Insights</a>
+      <a href="carrieres.html" class="nav-link-active">Carrières</a>
+      <a href="index.html#contact" class="btn-vermillion nav-mobile-cta">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="jobs-hero" id="top">
+      <div class="jobs-hero-bg" aria-hidden="true">
+        <div class="bi-hero-grid"></div>
+        <div class="bi-hero-halo"></div>
+      </div>
+      <div class="container jobs-hero-inner">
+        <nav class="bi-breadcrumb hero-text-1" aria-label="Fil d'Ariane">
+          <a href="index.html">Accueil</a>
+          <span aria-hidden="true">/</span>
+          <a href="carrieres.html">Carrières</a>
+          <span aria-hidden="true">/</span>
+          <span>Postuler</span>
+        </nav>
+        <p class="section-label hero-text-1">Candidature</p>
+        <h1 class="jobs-hero-title hero-text-2">Postuler</h1>
+        <p class="jobs-hero-chapo hero-text-4">Pas de lettre de motivation. Un CV, un portfolio, trois travaux dont vous êtes fier, et deux lignes pour dire pourquoi ceux-là. Vous recevez un accusé de réception, l’agence reçoit votre dossier.</p>
+      </div>
+    </section>
+
+    <section class="jobs-section">
+      <div class="container apply-wrap">
+        <form class="apply-form" id="apply-form" novalidate>
+          <input type="hidden" name="form_type" value="application">
+
+          <div class="form-field">
+            <label for="apply-position">Poste</label>
+            <select id="apply-position" name="position" required>
+              <option value="creation-cm">Chargé(e) de création et community management</option>
+              <option value="spontanee">Candidature spontanée</option>
+            </select>
+          </div>
+
+          <div class="apply-grid">
+            <div class="form-field">
+              <label for="apply-name">Nom complet</label>
+              <input type="text" id="apply-name" name="name" placeholder="Votre nom" required autocomplete="name">
+            </div>
+            <div class="form-field">
+              <label for="apply-email">Courriel</label>
+              <input type="email" id="apply-email" name="email" placeholder="vous@email.com" required autocomplete="email">
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="apply-phone">Téléphone</label>
+            <input type="tel" id="apply-phone" name="phone" placeholder="+225 …" required autocomplete="tel">
+          </div>
+
+          <div class="form-field">
+            <label for="apply-portfolio">Lien vers votre portfolio</label>
+            <input type="text" id="apply-portfolio" name="portfolio" placeholder="Behance, Drive, Instagram, site…" required>
+          </div>
+
+          <fieldset class="apply-works">
+            <legend>Trois travaux dont vous êtes fier</legend>
+            <p class="form-hint">Liens Drive, Behance, Instagram ou site. Un travail par champ.</p>
+            <div class="form-field">
+              <label for="apply-work1">Travail 1</label>
+              <input type="text" id="apply-work1" name="work1" required>
+            </div>
+            <div class="form-field">
+              <label for="apply-work2">Travail 2</label>
+              <input type="text" id="apply-work2" name="work2" required>
+            </div>
+            <div class="form-field">
+              <label for="apply-work3">Travail 3</label>
+              <input type="text" id="apply-work3" name="work3" required>
+            </div>
+          </fieldset>
+
+          <div class="form-field">
+            <label for="apply-why">Pourquoi ceux-là</label>
+            <textarea id="apply-why" name="why" rows="3" maxlength="400" placeholder="Deux lignes suffisent." required></textarea>
+          </div>
+
+          <div class="form-field">
+            <label for="apply-cv">CV <span class="form-optional">(PDF, 5 Mo max — facultatif si déjà dans le portfolio)</span></label>
+            <input type="file" id="apply-cv" name="cv" accept="application/pdf,.pdf">
+          </div>
+
+          <p class="contact-form-error" id="apply-error" hidden role="alert"></p>
+
+          <button type="submit" class="btn-vermillion contact-form-submit" id="apply-submit">
+            <span>Envoyer ma candidature</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </form>
+
+        <div class="apply-success" id="apply-success" hidden>
+          <div class="success-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2"/>
+              <path d="M14 24l7 7 13-14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h2 class="success-title">Candidature envoyée</h2>
+          <p class="success-text">Un accusé de réception part vers votre courriel. Si le dossier correspond, nous vous appelons sous cinq jours — y compris pour un non.</p>
+          <a href="carrieres.html" class="btn-navy btn-md">Retour aux carrières</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">
+            <img src="logo.png" alt="RAC'IN AFRICA" class="nav-logo-img">
+          </a>
+          <p class="footer-desc">Agence de communication stratégique et de business intelligence, Abidjan.</p>
+          <address class="footer-address">
+            Cocody II Plateaux Vallon<br>
+            Lot 2064, ilot 185<br>
+            25 BP 1057 Abidjan 25<br>
+            <a href="mailto:contact@racin.africa">contact@racin.africa</a><br>
+            <a href="tel:+2250709302481">+225 07 09 30 24 81</a>
+          </address>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col-title">L'agence</h4>
+          <a href="carrieres.html">Carrières</a>
+          <a href="references.html">Références</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 RAC'IN AFRICA.</p>
+        <p>Site conçu et développé par RAC'IN AFRICA</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

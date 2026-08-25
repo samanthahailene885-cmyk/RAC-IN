@@ -324,7 +324,7 @@
               <img src="Logo ONEMART LOGISTIQUE.png" alt="Onemart" loading="lazy">
             </div>
             <div class="reference-item">
-              <img src="logo africim.png" alt="Africim" loading="lazy" style="filter: grayscale(100%) invert(1) contrast(2);">
+              <img src="logo-africim.png" alt="Africim" loading="lazy">
             </div>
             <div class="reference-item">
               <img src="logo cuisine.png" alt="Cuisine" loading="lazy">
@@ -332,9 +332,12 @@
             <div class="reference-item">
               <img src="logo-black-shield.png" alt="Black Shield" loading="lazy">
             </div>
-            <div class="reference-item">
-              <img src="logo-rootup.png" alt="ROOTup" loading="lazy">
-            </div>
+          <div class="reference-item">
+            <img src="logo-rootup.png" alt="ROOTup" loading="lazy">
+          </div>
+        </div>
+          <div class="references-more">
+            <a href="references.html" class="btn-outline-cream btn-md">Voir le détail des missions</a>
           </div>
         </div>
       </div>
@@ -407,9 +410,9 @@
               <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=350&fit=crop&auto=format" alt="Portrait de Cheunel HIAMIEN Adamo, Responsable clientel">
             </div>
             <div class="team-info">
-              <h3 class="team-name">HIAMIEN Adamo</h3>
-              <p class="team-role">Responsable clientel</p>
-              <p class="team-domain">Direction compte client</p>
+              <h3 class="team-name">HIAMIEN Adamo Cheunel</h3>
+              <p class="team-role">Responsable de la clientèle</p>
+              <p class="team-domain">Gestion de comptes clients</p>
             </div>
           </article>
           <article class="team-card reveal reveal-delay-5">
@@ -417,7 +420,7 @@
               <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=350&fit=crop&auto=format" alt="Portrait de Kader, Responsable Digital">
             </div>
             <div class="team-info">
-              <h3 class="team-name">Kader</h3>
+              <h3 class="team-name">Kader SOUAMY</h3>
               <p class="team-role">Responsable Digital</p>
               <p class="team-domain">Stratégie & influence digitale</p>
             </div>
@@ -427,9 +430,9 @@
               <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=350&fit=crop&auto=format" alt="Portrait de Hindoune, chargé de projet">
             </div>
             <div class="team-info">
-              <h3 class="team-name">Hindoune</h3>
-              <p class="team-role">Chargé de projet </p>
-              <p class="team-domain">IA (Intellignance Artificielle)</p>
+              <h3 class="team-name">Hindoune Hailene Abdourahamane</h3>
+              <p class="team-role">Chargé de projets tech.et IA (Technologie et intelligence artificielle)  </p>
+              <p class="team-domain">Direction Général</p>
             </div>
           </article>
         </div>
@@ -543,6 +546,7 @@
         <h3 class="contact-modal-title" id="contact-modal-title">Écrivez-nous</h3>
         <p class="contact-modal-subtitle">Dites-nous votre projet — réponse sous 24 heures.</p>
         <form class="contact-form" id="contact-form" novalidate>
+          
           <div class="form-field form-field--reveal">
             <label for="contact-name">Nom complet</label>
             <input type="text" id="contact-name" name="name" placeholder="Votre nom" required autocomplete="name">
@@ -582,8 +586,9 @@
             <label for="contact-message">Message</label>
             <textarea id="contact-message" name="message" rows="4" placeholder="Décrivez votre projet et votre contexte…" required></textarea>
           </div>
-          <button type="submit" class="btn-vermillion contact-form-submit form-field--reveal">
-            Envoyer le message
+          <p class="contact-form-error" id="contact-form-error" hidden role="alert"></p>
+          <button type="submit" class="btn-vermillion contact-form-submit form-field--reveal" id="contact-form-submit">
+            <span class="contact-form-submit-label">Envoyer le message</span>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </form>
